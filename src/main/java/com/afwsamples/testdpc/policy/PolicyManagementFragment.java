@@ -2968,9 +2968,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
               @Override
               public void onClick(DialogInterface dialog, int which) {
                 Set<String> packageNames = new HashSet<>();
-                String packageName = editText.getText().toString();
-                if (!TextUtils.isEmpty(packageName)) {
-                  packageNames.add(packageName);
+                String packages = editText.getText().toString();
+                if (!TextUtils.isEmpty(packages)) {
+                  String[] p = packages.split(";");
+                  Collections.addAll(packageNames, p);
                 }
 
                 mDevicePolicyManager.setCredentialManagerPolicy(
